@@ -5,19 +5,20 @@ const Navbar = (props) => {
   console.log(props.user)
   let nav = props.user ?
     <div>
-      <Link to='' className='Navbar-link' onClick={props.handleLogout}>LOG OUT</Link>
+      <Link to='/' className='Navbar-link' onClick={props.handleLogout}>LOG OUT</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to="/dashboard" className='Navbar-link'>DASHBOARD</Link>
+      <Link to="/dashboard" className='Navbar-link'>BACK TO DASHBOARD</Link>
     </div>
     :
     <div>
       <Link to='/login' className='Navbar-link'>LOG IN</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to='/signup' className='Navbar-link'>SIGN UP</Link>
-    </div>;
+    </div>
 
   return (
     <div className='NavBar'>
+      <Link to="/"><h1>Bottle-IQ</h1></Link>
       {nav}
     </div>
   );

@@ -1,20 +1,23 @@
 import React from 'react';
-import '../../index';
+import '../index';
 import {Route, Link} from 'react-router-dom'
 import userService from "../utils/userService"
-import Login from "../pages/Login"
-import Signup from "../pages/Signup"
-import Navbar from "../Navbar"
-import Dashboard from "../pages/Dashboard"
+import Login from "./Login"
+import Signup from "./Signup"
+import Navbar from "../components/Navbar"
+import Dashboard from "./Dashboard"
+import infoService from "../utils/infoService"
 
 class App extends React.Component {
   state ={
-    user: userService.getUser
+    user: userService.getUser(),
+    userInfo: ""
   }
+
 
                                   // **********CALLBACK METHODS***********
   handleLogout = () => {
-    userService.logout();
+    userService.logout()
     this.setState({ user: null });
   }
 
@@ -23,22 +26,16 @@ class App extends React.Component {
   }
 
                               // *************LIFECYCLE METHODS*****************
-  // async componentDidMount() {
-  //   const scores = await scoresService.index();
-  //   this.setState({ scores });
-  // }
+  async componentDidMount() {
+    const userInfo = await infoService.index();
+    this.setState({ userInfo });
+  }
 
 
   render() {
+    console.log(this.state.userInfo)
     return(
       <div className="app">
-            <Link to="/"><h1>Bottle-IQ</h1></Link>
-
-            <Route exact path="/dashboard" render={() => 
-              <Dashboard
-                user={this.state.user}
-              />
-            }/>
 
             <Route exact path="/" render={() =>  
               <Navbar
@@ -47,15 +44,23 @@ class App extends React.Component {
               />
             }/>
 
+            <Route exact path="/dashboard" render={() => 
+              <Dashboard
+                userInfo={this.state.userInfo}
+              />
+            }/>
+
             <Route exact path="/signup" render={({history}) =>
               <Signup
+                user={this.state.user}
                 history={history}
                 handleSignupOrLogin={this.handleSignupOrLogin}
               /> 
             }/>
 
-            <Route exact path="/login" render={({history}) =>
+            <Route exact path='/login' render={({history}) =>
               <Login
+                user={this.state.user}
                 history={history}
                 handleSignupOrLogin={this.handleSignupOrLogin}
               /> 

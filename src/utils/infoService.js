@@ -1,22 +1,26 @@
 import tokenService from './tokenService';
+import userService from "./userService"
 
 const BASE_URL = 'http://localhost:3000/users';
 
 export default {
   index,
-  create
+  // create
 };
 
 function index() {
+  console.log()
   const options = {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + tokenService.getToken(),
       'Content-Type': "application/x-www-form-urlencoded"
-    }
+    },
   };
-  return fetch(BASE_URL + "/", options).then(res => res.json());
+  console.log(userService.getUser().id)
+  return fetch(BASE_URL + `/${userService.getUser().id}`, options).then(res => res.json());
 }
+
 
 // function create(score) {
 //   const options = {

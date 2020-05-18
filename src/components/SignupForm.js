@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import userService from '../components/utils/userService';
+import { Link, Redirect } from 'react-router-dom';
+import userService from '../utils/userService';
 
 
 class SignupForm extends Component {
@@ -40,16 +40,22 @@ class SignupForm extends Component {
     render() {
       return (
         <div>
-            <header className="signup-header">Sign Up</header>
-            <form className="signup-form" onSubmit={this.handleSubmit} >
-                <input className="signup-input" type="text"  placeholder="Store Name/Address" value={this.state.store_name} name="store_name" onChange={this.handleChange} />
-                <input className="signup-input" type="email"  placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
-                <input className="signup-input" type="password"  placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
-                <input className="signup-input" type="password"  placeholder="Confirm Password" value={this.state.password_confirmation} name="password_confirmation" onChange={this.handleChange} />
-                <button disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
-                <Link to='/'>Cancel</Link>
-            </form>
-            </div>
+          {this.props.user ? 
+            <Redirect push to="/"/>
+              :
+              <div>
+                <header className="signup-header">Sign Up</header>
+                <form className="signup-form" onSubmit={this.handleSubmit} >
+                    <input className="signup-input" type="text"  placeholder="Store Name/Address" value={this.state.store_name} name="store_name" onChange={this.handleChange} />
+                    <input className="signup-input" type="email"  placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+                    <input className="signup-input" type="password"  placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
+                    <input className="signup-input" type="password"  placeholder="Confirm Password" value={this.state.password_confirmation} name="password_confirmation" onChange={this.handleChange} />
+                    <button disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
+                    <Link to='/'>Cancel</Link>
+                </form>
+              </div>
+          }
+        </div>
         );
     }
   }

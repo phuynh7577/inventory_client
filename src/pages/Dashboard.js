@@ -2,28 +2,16 @@ import React, { Component } from 'react';
 
 class Dashboard extends Component {
 
-
-
-
-
-
     render() {
-        console.log(this.props.user)
         return (
             <div className="dashboard">
-                
+                <h1>{this.props.userInfo.store_name}</h1>
             </div>
           );
       }
     }
 
-
-
-
-
-
-
-    export default Dashboard;
+export default Dashboard;
 
 
 
