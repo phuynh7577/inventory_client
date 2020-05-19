@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../index';
-import {Route, Link} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import userService from "../utils/userService"
 import Login from "./Login"
 import Signup from "./Signup"
@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar"
 import Dashboard from "./Dashboard"
 import infoService from "../utils/infoService"
 
-class App extends React.Component {
+class App extends Component {
   state ={
     user: userService.getUser(),
     userInfo: ""
@@ -25,15 +25,18 @@ class App extends React.Component {
     this.setState({user: userService.getUser()});
   }
 
+  // note to self - might need a handleupdate for dashboard to setstate to null when logging out.
+
+
                               // *************LIFECYCLE METHODS*****************
-  async componentDidMount() {
-    const userInfo = await infoService.index();
-    this.setState({ userInfo });
-  }
+  // async componentDidMount () {
+  //   const userInfo = await infoService.show();
+  //   this.setState({ userInfo });
+  // }
 
 
   render() {
-    console.log(this.state.userInfo)
+    // console.log(this.state.userInfo)
     return(
       <div className="app">
 
@@ -44,9 +47,11 @@ class App extends React.Component {
               />
             }/>
 
-            <Route exact path="/dashboard" render={() => 
+            <Route exact path="/dashboard" render={(props) => 
               <Dashboard
+                user={this.state.user}
                 userInfo={this.state.userInfo}
+                handleLogout={this.handleLogout}
               />
             }/>
 

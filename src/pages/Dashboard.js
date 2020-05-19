@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-
+import DashNav from "../components/DashNav"
 class Dashboard extends Component {
 
     render() {
         return (
             <div className="dashboard">
-                <h1>{this.props.userInfo.store_name}</h1>
+              <DashNav
+                user={this.props.user}
+                userInfo={this.props.userInfo}
+                handleLogout={this.props.handleLogout}
+              />
             </div>
           );
       }

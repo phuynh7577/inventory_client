@@ -1,26 +1,27 @@
 import tokenService from './tokenService';
 import userService from "./userService"
 
-const BASE_URL = 'http://localhost:3000/users';
+const BASE_URL = 'http://localhost:3000/users/';
 
 export default {
-  index,
+  show,
   // create
 };
 
-function index() {
-  console.log()
+function show() {
+  // if token sticks then run GET
   const options = {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + tokenService.getToken(),
-      'Content-Type': "application/x-www-form-urlencoded"
+      // 'Content-Type': "application/x-www-form-urlencoded"
     },
   };
-  console.log(userService.getUser().id)
   return fetch(BASE_URL + `/${userService.getUser().id}`, options).then(res => res.json());
 }
 
+
+// ${userService.getUser().id}
 
 // function create(score) {
 //   const options = {

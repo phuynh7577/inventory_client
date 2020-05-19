@@ -34,7 +34,7 @@ function signup(user) {
 
   function login(creds) {
     let newUser = {user: creds}
-    console.log(newUser)
+    // console.log(newUser)
     return fetch(BASE_URL + '/login', {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/json'}),
@@ -42,6 +42,7 @@ function signup(user) {
     })
     .then(res => {
       // Valid login if we have a status of 200 (res.ok)
+      console.log(res)
       if (res.ok) return res.json();
       throw new Error('Bad Credentials!');
     })
