@@ -18,7 +18,6 @@ const Navbar = (props) => {
 
   return (
     <div className='NavBar'>
-      <Link to="/"><h1>Bottle-IQ</h1></Link>
       {nav}
     </div>
   );

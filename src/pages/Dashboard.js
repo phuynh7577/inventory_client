@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DashNav from "../components/DashNav"
+
 class Dashboard extends Component {
 
     render() {

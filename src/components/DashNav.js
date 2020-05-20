@@ -2,8 +2,6 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 const DashNav = (props) => {
-    // console.log(props.userInfo)
-
     let dashNav = props.user ? 
         <nav>
           <h1>{props.userInfo.store_name}</h1>

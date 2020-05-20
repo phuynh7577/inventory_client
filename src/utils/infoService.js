@@ -9,6 +9,9 @@ export default {
 };
 
 function show() {
+  if (userService.getUser() === null) {
+
+  }else {
   // if token sticks then run GET
   const options = {
     method: 'GET',
@@ -18,6 +21,9 @@ function show() {
     },
   };
   return fetch(BASE_URL + `/${userService.getUser().id}`, options).then(res => res.json());
+  }
+
+
 }
 
 

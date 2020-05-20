@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../index';
-import {Route} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 import userService from "../utils/userService"
 import Login from "./Login"
 import Signup from "./Signup"
@@ -25,20 +25,35 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
+  //clearing state after POST
+  handleAdd = (data) => {
+    const copyUserInfo = [...this.state.userInfo]
+    copyUserInfo.unshift(data)
+    this.setState({
+    userInfo: copyUserInfo,
+    category: '',
+    qty: '',
+    name: '',
+    price_per_item: '',
+    total_cost: ''
+    })
+}
+
   // note to self - might need a handleupdate for dashboard to setstate to null when logging out.
 
 
                               // *************LIFECYCLE METHODS*****************
-  // async componentDidMount () {
-  //   const userInfo = await infoService.show();
-  //   this.setState({ userInfo });
-  // }
+  async componentDidMount () {
+    const userInfo = await infoService.show();
+    this.setState({ userInfo });
+  }
 
 
   render() {
     // console.log(this.state.userInfo)
     return(
       <div className="app">
+            <Link to="/"><h1>Bottle-IQ</h1></Link>
 
             <Route exact path="/" render={() =>  
               <Navbar
