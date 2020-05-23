@@ -34,7 +34,7 @@ class SignupForm extends Component {
     }
   
     isFormInvalid() {
-      return !(this.state.store_name && this.state.email && this.state.password === this.state.password_confirmation);
+      return !(this.state.store_name && this.state.email && this.state.password && this.state.password_confirmation && this.state.password === this.state.password_confirmation);
     }
   
     render() {
@@ -50,8 +50,10 @@ class SignupForm extends Component {
                     <input className="signup-input" type="email"  placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
                     <input className="signup-input" type="password"  placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
                     <input className="signup-input" type="password"  placeholder="Confirm Password" value={this.state.password_confirmation} name="password_confirmation" onChange={this.handleChange} />
-                    <button disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
-                    <Link to='/'>Cancel</Link>
+                    <button disabled={this.isFormInvalid()}>Sign Up</button>
+                    <div className="return">
+                      <Link to='/'>Return</Link>
+                    </div>
                 </form>
               </div>
           }

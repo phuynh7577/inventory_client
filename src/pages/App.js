@@ -8,53 +8,39 @@ import Navbar from "../components/Navbar"
 import Dashboard from "./Dashboard"
 import infoService from "../utils/infoService"
 
+
+
 class App extends Component {
   state ={
     user: userService.getUser(),
-    userInfo: ""
+    // userInfo: [],
   }
 
 
                                   // **********CALLBACK METHODS***********
   handleLogout = () => {
     userService.logout()
-    this.setState({ user: null });
+    this.setState({ user: null })
   }
 
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
 
-  //clearing state after POST
-  handleAdd = (data) => {
-    const copyUserInfo = [...this.state.userInfo]
-    copyUserInfo.unshift(data)
-    this.setState({
-    userInfo: copyUserInfo,
-    category: '',
-    qty: '',
-    name: '',
-    price_per_item: '',
-    total_cost: ''
-    })
-}
-
   // note to self - might need a handleupdate for dashboard to setstate to null when logging out.
 
 
                               // *************LIFECYCLE METHODS*****************
-  async componentDidMount () {
-    const userInfo = await infoService.show();
-    this.setState({ userInfo });
-  }
+  // async componentDidMount () {
+  //   const userInfo = await infoService.show();
+  //   this.setState({ userInfo });
+  // }
 
 
   render() {
-    // console.log(this.state.userInfo)
+    console.log(this.state.user)
     return(
       <div className="app">
-            <Link to="/"><h1>Bottle-IQ</h1></Link>
-
             <Route exact path="/" render={() =>  
               <Navbar
                 user={this.state.user}
@@ -62,10 +48,10 @@ class App extends Component {
               />
             }/>
 
-            <Route exact path="/dashboard" render={(props) => 
+            <Route path="/dashboard" render={(props) => 
               <Dashboard
+                handleAdd={this.handleAdd}
                 user={this.state.user}
-                userInfo={this.state.userInfo}
                 handleLogout={this.handleLogout}
               />
             }/>
@@ -85,7 +71,6 @@ class App extends Component {
                 handleSignupOrLogin={this.handleSignupOrLogin}
               /> 
             }/>
-          
       </div>
     )
   }

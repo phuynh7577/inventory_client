@@ -35,26 +35,22 @@ class Login extends Component {
         {this.props.user ? 
           <Redirect push to="/"/>
             :
-          <div className="LoginPage">
+          <div className="login-page">
+            <div className="title">
+              <Link to="/"><h1>LIQUOR-IQ</h1></Link>
+            </div>
           <header className="login-header">Log In</header>
           <form className="login-form" onSubmit={this.handleSubmit} >
                 <input type="email" className="login-input" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
                 <input type="password" className="login-input" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
-                <button>Log In</button> &nbsp;&nbsp;&nbsp; <Link to='/'>Cancel</Link>
+                <button>Log In</button>
+                <div className="return">
+                  <Link to='/'>Return</Link>
+                </div>
           </form>
         </div>
         }
       </div>
-      
-
-      // <div className="LoginPage">
-      //   <header className="login-header">Log In</header>
-      //   <form className="login-form" onSubmit={this.handleSubmit} >
-      //         <input type="email" className="login-input" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
-      //         <input type="password" className="login-input" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
-      //         <button>Log In</button> &nbsp;&nbsp;&nbsp; <Link to='/'>Cancel</Link>
-      //   </form>
-      // </div>
     );
   }
 }

@@ -3,28 +3,28 @@ import userService from "./userService"
 
 const BASE_URL = 'http://localhost:3000/users/';
 
-export default {
-  show,
-  // create
-};
+// export default {
+//   show,
+//   // create
+// };
 
-function show() {
-  if (userService.getUser() === null) {
+// function show() {
+//   if (userService.getUser() === null) {
+//   }
+//   else {
+//   // if token sticks then run GET
+//   const options = {
+//     method: 'GET',
+//     headers: {
+//       'Authorization': 'Bearer ' + tokenService.getToken(),
+//       // 'Content-Type': "application/x-www-form-urlencoded"
+//     },
+//   };
+//   return fetch(BASE_URL + `/${userService.getUser().id}`, options).then(res => res.json());
+//   }
 
-  }else {
-  // if token sticks then run GET
-  const options = {
-    method: 'GET',
-    headers: {
-      'Authorization': 'Bearer ' + tokenService.getToken(),
-      // 'Content-Type': "application/x-www-form-urlencoded"
-    },
-  };
-  return fetch(BASE_URL + `/${userService.getUser().id}`, options).then(res => res.json());
-  }
 
-
-}
+// }
 
 
 // ${userService.getUser().id}
