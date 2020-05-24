@@ -14,38 +14,29 @@ class InventoryForm extends Component {
     }
 
 
-
-
     //POST request
     handleSubmit = (event) => {
         event.preventDefault() 
         //send data to server
         fetch(`http://localhost:3000/users/${userService.getUser().id}/inventories`, {
-        method: 'POST',
-        body: JSON.stringify({
-            category: this.state.category,
-            qty: this.state.qty,
-            name: this.state.name,
-            price_per_item: this.state.price_per_item,
-            total_cost: this.state.total_cost
-        }),
-        headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-        }
+            method: 'POST',
+            body: JSON.stringify({
+                category: this.state.category,
+                qty: this.state.qty,
+                name: this.state.name,
+                price_per_item: this.state.price_per_item,
+                total_cost: this.state.total_cost
+            }),
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
         //server responses with json
-        }).then (res => res.json())
+        })
+        .then (res => res.json())
         .then (resJson => {
-            // clears it
-            this.setState({
-                category: "",
-                qty: "",
-                name: "",
-                price_per_item: "",
-                total_cost: ""
-            })
-            // redirecting to home page
-            this.props.history.push('/dashboard/form-input')
+            this.props.handleAddRequest(resJson)
+            // this.props.history.push('/dashboard/input-form')
         }).catch (error => console.error({'Error': error}))
     }
 
@@ -59,7 +50,7 @@ class InventoryForm extends Component {
       }
 
 render(){
-    console.log(this.props.userInfo)
+    console.log(this.props)
     return(
         <div>
             {this.props.userInfo === "" 

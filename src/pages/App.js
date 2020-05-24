@@ -26,6 +26,7 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
+  
 
   // note to self - might need a handleupdate for dashboard to setstate to null when logging out.
 

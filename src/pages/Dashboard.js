@@ -13,8 +13,21 @@ import EditInventory from "../components/EditInventory"
 class Dashboard extends Component {
 
   state = {
-    userInfo: ""
+    userInfo: []
   }
+
+  handleAddRequest = (userInfo) => {
+    const copyUserInfo = [...this.state.userInfo]
+    copyUserInfo.unshift(userInfo)
+    this.setState({
+        userInfo: copyUserInfo,
+        category: "",
+        qty: "",
+        name: "",
+        price_per_item: "",
+        total_cost: ""
+    })
+}
 
   componentDidMount() {
     this.getUserInfo()
@@ -30,7 +43,7 @@ class Dashboard extends Component {
         .then(res => res.json())
         .then(data => {
           this.setState({
-              userInfo: data
+              userInfo: data.inventories
           })
       })
         .catch(err => console.log(err))
@@ -81,21 +94,26 @@ class Dashboard extends Component {
                       <Overview 
                         {...props}
                         user={this.props.user}
-                        userInfo={this.state.userInfo}/>}
+                        userInfo={this.state.userInfo}
+                        />}
                     />
 
                   <Route exact path="/dashboard/form-input" render= {props => 
                       <InventoryForm 
                         {...props}
                         user={this.props.user}
-                        userInfo={this.state.userInfo}/>}
+                        userInfo={this.state.userInfo}
+                        handleAddRequest={this.handleAddRequest}
+                        />}
                     />
+
 
                   <Route exact  path="/dashboard/view-edit" render= {props => 
                       <EditInventory
                         {...props}
                         user={this.props.user}
-                        userInfo={this.state.userInfo}/>}
+                        userInfo={this.state.userInfo}
+                        />}
                     />
                 </div>
               </div>
