@@ -18,27 +18,32 @@ class EditInventory extends Component {
             // console.log(this.state.filteredCategory)
     }
 
-    handleDateChange = (event, date) => {
-        let formattedDate = this.formatDate(date);
-        console.log(formattedDate);
+    handleDateChange = date => {
         this.setState({
-            startDate: formattedDate
+          startDate: date
         });
-    };
+        console.log(this.state.startDate)
+      };
 
-    formatDate(date) {
-    let d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+    //   formatDate(date) {
+    //     let d = new Date(date),
+    //         month = '' + (d.getMonth() + 1),
+    //         day = '' + d.getDate(),
+    //         year = d.getFullYear();
 
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
+    //     if (month.length < 2) month = '0' + month;
+    //     if (day.length < 2) day = '0' + day;
 
-    return [year, month, day].join('-');
-}
+    //     return [year, month, day].join('-');
+    // }
 
-
+    // handleDateChange = (event, date) => {
+    //     let formattedDate = this.formatDate(date);
+    //     console.log(formattedDate);
+    //     this.setState({
+    //         startDate: formattedDate
+    //     });
+    // };
 
 
 
