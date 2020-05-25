@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import '../index';
-import {Route, Link} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import userService from "../utils/userService"
 import Login from "./Login"
 import Signup from "./Signup"
 import Navbar from "../components/Navbar"
 import Dashboard from "./Dashboard"
-import infoService from "../utils/infoService"
-
 
 
 class App extends Component {
@@ -26,16 +24,8 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
-  
-
-  // note to self - might need a handleupdate for dashboard to setstate to null when logging out.
-
-
                               // *************LIFECYCLE METHODS*****************
-  // async componentDidMount () {
-  //   const userInfo = await infoService.show();
-  //   this.setState({ userInfo });
-  // }
+ 
 
 
   render() {

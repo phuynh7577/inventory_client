@@ -16,6 +16,7 @@ class Dashboard extends Component {
     userInfo: []
   }
 
+  // handle inventory submit
   handleAddRequest = (userInfo) => {
     const copyUserInfo = [...this.state.userInfo]
     copyUserInfo.unshift(userInfo)
@@ -31,14 +32,16 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.getUserInfo()
+    
   }
 
+  // Get request
   getUserInfo = () => {
     fetch(`http://localhost:3000/users/${userService.getUser().id}`, {
-    method: 'GET',
-    headers: {
-      'Authorization': 'Bearer ' + tokenService.getToken()
-    }
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      }
     })
         .then(res => res.json())
         .then(data => {
@@ -47,6 +50,26 @@ class Dashboard extends Component {
           })
       })
         .catch(err => console.log(err))
+  }
+
+  // delete/destroy
+
+  handleDelete = (inventory) => {
+      fetch(`http://localhost:3000/users/${userService.getUser().id}/inventories/${inventory.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        }
+      })
+    .then(json => {
+      const newUserInfo = this.state.userInfo.filter(inventories => inventories.id !== inventory.id)
+      this.setState({newUserInfo})
+      this.componentDidMount()
+    })
+    .catch(error => 
+      console.log(error)
+      )
   }
 
 
@@ -113,6 +136,7 @@ class Dashboard extends Component {
                         {...props}
                         user={this.props.user}
                         userInfo={this.state.userInfo}
+                        handleDelete={this.handleDelete}
                         />}
                     />
                 </div>

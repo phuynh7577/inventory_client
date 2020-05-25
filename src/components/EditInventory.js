@@ -1,65 +1,74 @@
 import React, { Component } from 'react';
 import {Route, Link, Redirect} from 'react-router-dom' 
+import userService from "../utils/userService"
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 class EditInventory extends Component {
     state = {
         filteredCategory: "all",
-        startDate: new Date()
+        date: !this.props.userInfo ? "" : this.props.userInfo[0].date,
+        inputDate: true
     }
 
+    // handle category change and if date input date should populate or not.
     handleCategoryChange = e => {
+        if (e.target.value === "all") {
             this.setState({
+                inputDate: true,
                 filteredCategory: e.target.value
             })
-            // console.log(e.target.value)
-            // console.log(this.state.filteredCategory)
+        }
+        else {
+            this.setState({
+                inputDate: false,
+                filteredCategory: e.target.value
+            })
+        }
+        console.log(this.state.inputDate)
     }
 
-    handleDateChange = date => {
+    // handle date change
+    handleDateChange = e => {
         this.setState({
-          startDate: date
-        });
-        console.log(this.state.startDate)
+          date: e.target.value
+        })
       };
 
-    //   formatDate(date) {
-    //     let d = new Date(date),
-    //         month = '' + (d.getMonth() + 1),
-    //         day = '' + d.getDate(),
-    //         year = d.getFullYear();
+    
+        // delete/destroy
 
-    //     if (month.length < 2) month = '0' + month;
-    //     if (day.length < 2) day = '0' + day;
-
-    //     return [year, month, day].join('-');
-    // }
-
-    // handleDateChange = (event, date) => {
-    //     let formattedDate = this.formatDate(date);
-    //     console.log(formattedDate);
-    //     this.setState({
-    //         startDate: formattedDate
-    //     });
-    // };
+//   handleDelete = (inventory) => {
+//     fetch(`http://localhost:3000/users/${userService.getUser().id}/inventories/${inventory.id}`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Accept': 'application/json, text/plain, */*',
+//         'Content-Type': 'application/json'
+//       }
+//     })
+//   .then(json => {
+//     const inventory = this.props.userInfo.filter(userInfo => userInfo.id !== userInfo.id)
+//     this.setState({inventory})
+//     console.log( inventory)
+//   })
+//   .catch(error => 
+//     console.log(error)
+//     )
+// }
 
 
 
     render() {
-        
-        console.log(this.state.startDate)
+        console.log(this.props.userInfo)
+        console.log(this.state.date)
         console.log(this.state.filteredCategory)
         return (
             <div className="edit">
-                {this.props.userInfo === "" ? 
+                {this.props.userInfo === null ? 
                     <Redirect push to="/dashboard"/>
                     : 
-                    <div className="edit-inventory">
-                        {/* <form action=""></form> */}
+                    <div>
                             <select onChange={this.handleCategoryChange} name="category" value={this.state.filteredCategory} id="filteredCategory">
-                                    <option value="all">Type</option>
+                                    <option value="all">All</option>
                                     <option value="Beer">Beer</option>
                                     <option value="Wine">Wine</option>
                                     <option value="Hard Cider">Hard Cider</option>
@@ -75,54 +84,56 @@ class EditInventory extends Component {
                                     <option value="Everclear">Everclear</option>
                                 </select>
 
-
-
-                                <DatePicker
-                                    dateFormat="yyyy-MM-dd"
-                                    selected={this.state.startDate}
+                                            {/* Render if input is false */}
+                            {this.state.inputDate === false ? 
+                                <input 
+                                    type="text" 
                                     onChange={this.handleDateChange}
+                                    value={this.state.date}
+                                    id="date"
+                                    placeholder="YYYY-MM-DD"
+                                    name="date"
+                                    />
+                                    : 
+                                    null
+                                }
+                                
 
-    
-                        
-                                />
-
-
-
-
-
-
-                            {/* <p>{this.props.userInfo.filter(inventories => 
-                                inventories.category === `${this.state.filteredCategory}` && inventories.date === "2020-05-23").map(filterName => (
-                                        <li>{filterName.name}</li>
-                                    ))}</p> */}
-
-
+                                <div className="edit-inventory">
                                     <table className="table">
                                         <tbody>
                                             <tr>
+                                                <th></th>
                                                 <th className="table-date">Input Date</th>
+                                                <th>Type</th>
                                                 <th>Inventory</th>
                                                 <th>QTY</th>
                                                 <th>Price Per Item</th>
                                                 <th>Total Cost</th>
                                             </tr>
 
-                                            {this.state.filteredCategory === "all" ? this.props.userInfo.map(inventories => (
-                                            <tr key={inventories.id} className="info" id={inventories.id % 2 === 0 ? "dos" : "uno"}>
-                                                <td className="table-date">{inventories.date}</td>
-                                                <td>{inventories.name}</td>
-                                                <td>{inventories.qty}</td>
-                                                <td><span>$</span>{inventories.price_per_item}</td>
-                                                <td><span>$</span>{inventories.total_cost}</td>
-                                            </tr>
+                                            {this.state.filteredCategory === "all" ? this.props.userInfo
+                                                .map(inventories => (
+                                                    <>
+                                                    <tr key={inventories.id} className="info" id={inventories.id % 2 === 0 ? "dos" : "uno"}>
+                                                        <td><img className="x" onClick={() =>this.props.handleDelete(inventories)} src="../x.png" width="22px"/></td>
+                                                        <td className="table-date">{inventories.date}</td>
+                                                        <td>{inventories.category}</td>
+                                                        <td>{inventories.name}</td>
+                                                        <td>{inventories.qty}</td>
+                                                        <td><span>$</span>{inventories.price_per_item}</td>
+                                                        <td><span>$</span>{inventories.total_cost}</td>
+                                                    </tr>
+                                                    </>
                                             ))
                                             :
                                             <>
                                             {this.props.userInfo
-                                                .filter(inventories => inventories.category === `${this.state.filteredCategory}` && inventories.date === "2020-05-23")
+                                                .filter(inventories => inventories.category === `${this.state.filteredCategory}` && inventories.date === `${this.state.date}`)
                                                 .map(inventories => (
                                                     <tr key={inventories.id} className="info" id={inventories.id % 2 === 0 ? "dos" : "uno"}>
                                                         <td className="table-date">{inventories.date}</td>
+                                                        <td>{inventories.category}</td>
                                                         <td>{inventories.name}</td>
                                                         <td>{inventories.qty}</td>
                                                         <td><span>$</span>{inventories.price_per_item}</td>
@@ -133,7 +144,7 @@ class EditInventory extends Component {
                                             }
                                         </tbody>
                                     </table>
-
+                                    </div>
 
 
 
@@ -148,6 +159,30 @@ class EditInventory extends Component {
 export default EditInventory;
 
 
+
+{/* <>
+                                            {this.props.userInfo
+                                                .filter(inventories => inventories.category === `${this.state.filteredCategory}` && inventories.date === `${this.state.date}`)
+                                                .map(inventories => (
+                                                    <tr key={inventories.id} className="info" id={inventories.id % 2 === 0 ? "dos" : "uno"}>
+                                                        <td className="table-date">{inventories.date}</td>
+                                                        <td>{inventories.category}</td>
+                                                        <td>{inventories.name}</td>
+                                                        <td>{inventories.qty}</td>
+                                                        <td><span>$</span>{inventories.price_per_item}</td>
+                                                        <td><span>$</span>{inventories.total_cost}</td>
+                                                    </tr>
+                                                ))}
+                                            </> */}
+
+
+
+
+
+
+
+
+// `${this.state.startDate}`
 
 
                         // {this.props.userInfo 
