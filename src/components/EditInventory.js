@@ -6,7 +6,7 @@ import userService from "../utils/userService"
 class EditInventory extends Component {
     state = {
         filteredCategory: "all",
-        date: !this.props.userInfo ? "" : this.props.userInfo[0].date,
+        date: this.props.userInfo ? "" : this.props.userInfo[0].date,
         inputDate: true
     }
 
@@ -32,30 +32,7 @@ class EditInventory extends Component {
         this.setState({
           date: e.target.value
         })
-      };
-
-    
-        // delete/destroy
-
-//   handleDelete = (inventory) => {
-//     fetch(`http://localhost:3000/users/${userService.getUser().id}/inventories/${inventory.id}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Accept': 'application/json, text/plain, */*',
-//         'Content-Type': 'application/json'
-//       }
-//     })
-//   .then(json => {
-//     const inventory = this.props.userInfo.filter(userInfo => userInfo.id !== userInfo.id)
-//     this.setState({inventory})
-//     console.log( inventory)
-//   })
-//   .catch(error => 
-//     console.log(error)
-//     )
-// }
-
-
+      }    
 
     render() {
         console.log(this.props.userInfo)
@@ -67,6 +44,7 @@ class EditInventory extends Component {
                     <Redirect push to="/dashboard"/>
                     : 
                     <div>
+                        <div className="edit-options">
                             <select onChange={this.handleCategoryChange} name="category" value={this.state.filteredCategory} id="filteredCategory">
                                     <option value="all">All</option>
                                     <option value="Beer">Beer</option>
@@ -89,7 +67,7 @@ class EditInventory extends Component {
                                 <input 
                                     type="text" 
                                     onChange={this.handleDateChange}
-                                    value={this.state.date}
+                                    value={this.state.date || this.props.userInfo[0].date}
                                     id="date"
                                     placeholder="YYYY-MM-DD"
                                     name="date"
@@ -97,24 +75,24 @@ class EditInventory extends Component {
                                     : 
                                     null
                                 }
-                                
+                        </div> 
 
                                 <div className="edit-inventory">
-                                    <table className="table">
+                                    <table className="table"  id="table">
                                         <tbody>
                                             <tr>
                                                 <th></th>
                                                 <th className="table-date">Input Date</th>
                                                 <th>Type</th>
-                                                <th>Inventory</th>
+                                                <th>Name</th>
                                                 <th>QTY</th>
                                                 <th>Price Per Item</th>
                                                 <th>Total Cost</th>
                                             </tr>
 
                                             {this.state.filteredCategory === "all" ? this.props.userInfo
+                                            // .filter(inventories => )
                                                 .map(inventories => (
-                                                    <>
                                                     <tr key={inventories.id} className="info" id={inventories.id % 2 === 0 ? "dos" : "uno"}>
                                                         <td><img className="x" onClick={() =>this.props.handleDelete(inventories)} src="../x.png" width="22px"/></td>
                                                         <td className="table-date">{inventories.date}</td>
@@ -124,14 +102,14 @@ class EditInventory extends Component {
                                                         <td><span>$</span>{inventories.price_per_item}</td>
                                                         <td><span>$</span>{inventories.total_cost}</td>
                                                     </tr>
-                                                    </>
                                             ))
                                             :
                                             <>
                                             {this.props.userInfo
-                                                .filter(inventories => inventories.category === `${this.state.filteredCategory}` && inventories.date === `${this.state.date}`)
+                                                .filter(inventories => inventories.category === `${this.state.filteredCategory}` && inventories.date === `${this.state.date === "" ? this.props.userInfo[0].date : this.state.date}`)
                                                 .map(inventories => (
                                                     <tr key={inventories.id} className="info" id={inventories.id % 2 === 0 ? "dos" : "uno"}>
+                                                        <td><img className="x" onClick={() =>this.props.handleDelete(inventories)} src="../x.png" width="22px"/></td>
                                                         <td className="table-date">{inventories.date}</td>
                                                         <td>{inventories.category}</td>
                                                         <td>{inventories.name}</td>

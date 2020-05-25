@@ -32,7 +32,11 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.getUserInfo()
-    
+  }
+
+  getinfo = userInfo => {
+    this.setState({userInfo})
+    this.componentDidMount()
   }
 
   // Get request
@@ -104,7 +108,7 @@ class Dashboard extends Component {
                       <Link to="/dashboard/view-edit" className="three">
                         <div className="inside-three">
                           <img src="../edit.png" width="40px" alt="overview image"/>
-                          <h4>VIEW/EDIT<br/>INVENTORY</h4>
+                          <h4>VIEW/DELETE<br/>INVENTORY</h4>
                         </div>
                       </Link>
                     </aside>
@@ -137,6 +141,7 @@ class Dashboard extends Component {
                         user={this.props.user}
                         userInfo={this.state.userInfo}
                         handleDelete={this.handleDelete}
+                        componentDidMount={this.componentDidMount}
                         />}
                     />
                 </div>

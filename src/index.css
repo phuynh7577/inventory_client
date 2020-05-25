@@ -301,9 +301,7 @@ aside {
     color: white;
     font-family: "josefin slab", sans-serif;
 
-    -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+
 }
 .table th{    
     background-color: #484A55;
@@ -329,15 +327,22 @@ aside {
     background-color: #EFEEED;
 }
 
+.pagescroll {
+    height: 400px;
+    overflow-y: scroll;
+    -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+}
+/* USERINFO Display */
+
+
+
+/* EDIT/DELETE */
 .edit {
     height: 92%;
-    overflow-y: scroll;
-    /* background-color: white; */
+    overflow-y: auto;
     margin-top: 20px;
-
-    /* -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75); */
 }
 
 #filteredCategory {
@@ -358,8 +363,6 @@ aside {
 
 .x {
     line-height: 20px;
-    
-
 }
 
 .x:hover {
@@ -367,7 +370,21 @@ aside {
     background: #484A55;
 }
 
+.edit-inventory {
+    -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+}
 
+.edit-options {
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+
+    
+}
+/* EDIT/DELETE */
 
 
 
