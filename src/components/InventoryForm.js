@@ -18,7 +18,7 @@ class InventoryForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault() 
         //send data to server
-        fetch(`http://localhost:3000/users/${userService.getUser().id}/inventories`, {
+        fetch(`https://liquor-iq-api.herokuapp.com/users/${userService.getUser().id}/inventories`, {
             method: 'POST',
             body: JSON.stringify({
                 category: this.state.category,

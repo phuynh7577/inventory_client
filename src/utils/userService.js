@@ -1,9 +1,6 @@
 import tokenService from './tokenService';
 
-//localhost:3000/users = register
-//localhost:3000/users/login = login
-
-const BASE_URL = 'http://localhost:3000/users';
+const BASE_URL = 'https://liquor-iq-api.herokuapp.com/users';
 
 function signup(user) {
   let newUser = {user: user}

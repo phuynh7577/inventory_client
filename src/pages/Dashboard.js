@@ -43,7 +43,7 @@ class Dashboard extends Component {
   // Get request
   getUserInfo = () => {
     if (userService.getUser()) {
-      fetch(`http://localhost:3000/users/${userService.getUser().id}`, {
+      fetch(`https://liquor-iq-api.herokuapp.com/users/${userService.getUser().id}`, {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + tokenService.getToken()
@@ -65,7 +65,7 @@ class Dashboard extends Component {
   // delete/destroy
 
   handleDelete = (inventory) => {
-      fetch(`http://localhost:3000/users/${userService.getUser().id}/inventories/${inventory.id}`, {
+      fetch(`https://liquor-iq-api.herokuapp.com/users/${userService.getUser().id}/inventories/${inventory.id}`, {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json, text/plain, */*',
