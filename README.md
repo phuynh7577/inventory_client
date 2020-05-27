@@ -1,6 +1,5 @@
 ## Liquor-IQ
-User can create a new usser and login.
-Users will be allowed to create, read, and delete their inventories. 
+An app for liquor store owners that allows them to track their inventories.
 
 ## Link to front-end and back-end
 * https://liquor-iq.herokuapp.com/
