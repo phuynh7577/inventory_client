@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-  console.log(props.user)
   let nav = props.user ?
     <div>
       <Link to='/' className='Navbar-link' onClick={props.handleLogout}>LOG OUT</Link>

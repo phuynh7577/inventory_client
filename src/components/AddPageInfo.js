@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { mockComponent } from 'react-dom/test-utils';
 
 class AddPageInfo extends Component { 
 

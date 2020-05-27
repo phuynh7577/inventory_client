@@ -42,7 +42,7 @@ function signup(user) {
     })
     .then(res => {
       // Valid login if we have a status of 200 (res.ok)
-      console.log(res)
+      // console.log(res)
       if (res.ok) return res.json();
       throw new Error('Bad Credentials!');
     })

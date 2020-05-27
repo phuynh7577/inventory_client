@@ -301,7 +301,9 @@ aside {
     color: white;
     font-family: "josefin slab", sans-serif;
 
-
+     -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
 }
 .table th{    
     background-color: #484A55;
@@ -328,11 +330,9 @@ aside {
 }
 
 .pagescroll {
+
     height: 400px;
     overflow-y: scroll;
-    -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
 }
 /* USERINFO Display */
 
@@ -386,11 +386,14 @@ aside {
 }
 /* EDIT/DELETE */
 
+/* GRAPHS */
+canvas {
+    background-color: white;
+    margin-top: 10px;
+}
 
 
-
-
-
+/* GRAPHS */
 
 
 

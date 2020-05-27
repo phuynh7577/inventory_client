@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import userService from "../utils/userService"
 import AddPageInfo from "../components/AddPageInfo"
-import {Route, Link, Redirect} from 'react-router-dom' 
+import {Redirect} from 'react-router-dom' 
 
 class InventoryForm extends Component {
     state = {
@@ -50,7 +50,6 @@ class InventoryForm extends Component {
       }
 
 render(){
-    console.log(this.props)
     return(
         <div>
             {this.props.userInfo === "" 

@@ -29,7 +29,7 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.user)
+    // console.log(this.state.user)
     return(
       <div className="app">
             <Route exact path="/" render={() =>  

@@ -6,14 +6,14 @@ import userService from "../utils/userService"
 import tokenService from "../utils/tokenService"
 
 
-
 import Overview from "../components/Overview"
 import EditInventory from "../components/EditInventory"
 
 class Dashboard extends Component {
 
   state = {
-    userInfo: []
+    userInfo: [],
+    data: ""
   }
 
   // handle inventory submit
@@ -39,21 +39,27 @@ class Dashboard extends Component {
     this.componentDidMount()
   }
 
+
   // Get request
   getUserInfo = () => {
-    fetch(`http://localhost:3000/users/${userService.getUser().id}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + tokenService.getToken()
-      }
-    })
+    if (userService.getUser()) {
+      fetch(`http://localhost:3000/users/${userService.getUser().id}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+      })
         .then(res => res.json())
         .then(data => {
           this.setState({
-              userInfo: data.inventories
-          })
+            userInfo: data.inventories
+        })
       })
-        .catch(err => console.log(err))
+      .catch(err => console.log(err))
+    }
+    else {
+      return <Redirect push to="/"/>
+    }
   }
 
   // delete/destroy
@@ -76,9 +82,7 @@ class Dashboard extends Component {
       )
   }
 
-
     render() {
-      console.log(this.state.userInfo)
         return (
             <div>
               <DashNav
@@ -91,23 +95,23 @@ class Dashboard extends Component {
                 <div className="dashboard">
                   <div className="left">
                     <aside>
-                    <Link to="/dashboard/overview" className="one">
+                    <Link to="/dashboard" className="one">
                         <div className="inside-one">
-                          <img src="../overview.png" width="40px" alt="overview image"/>
+                          <img src="../overview.png" width="40px" alt="overview"/>
                           <h4>OVERVIEW</h4>
                         </div>
                       </Link>
                       
                       <Link to="/dashboard/form-input" className="two">
                         <div className="inside-two">
-                        <img src="../add.webp" width="50px" alt="overview image"/>
+                        <img src="../add.webp" width="50px" alt="overview"/>
                         <h4>ADD INVENTORY</h4>
                         </div>
                       </Link>
                       
                       <Link to="/dashboard/view-edit" className="three">
                         <div className="inside-three">
-                          <img src="../edit.png" width="40px" alt="overview image"/>
+                          <img src="../edit.png" width="40px" alt="overview"/>
                           <h4>VIEW/DELETE<br/>INVENTORY</h4>
                         </div>
                       </Link>
@@ -117,7 +121,7 @@ class Dashboard extends Component {
 
 
                 <div className="right">
-                  <Route exact  path="/dashboard/overview" render= {props => 
+                  <Route exact  path="/dashboard" render= {props => 
                       <Overview 
                         {...props}
                         user={this.props.user}

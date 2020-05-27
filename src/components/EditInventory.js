@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Route, Link, Redirect} from 'react-router-dom' 
-import userService from "../utils/userService"
+import {Redirect} from 'react-router-dom' 
+
 
 
 class EditInventory extends Component {
@@ -35,9 +35,6 @@ class EditInventory extends Component {
       }    
 
     render() {
-        console.log(this.props.userInfo)
-        console.log(this.state.date)
-        console.log(this.state.filteredCategory)
         return (
             <div className="edit">
                 {this.props.userInfo === null ? 
@@ -94,7 +91,7 @@ class EditInventory extends Component {
                                             // .filter(inventories => )
                                                 .map(inventories => (
                                                     <tr key={inventories.id} className="info" id={inventories.id % 2 === 0 ? "dos" : "uno"}>
-                                                        <td><img className="x" onClick={() =>this.props.handleDelete(inventories)} src="../x.png" width="22px"/></td>
+                                                        <td><img className="x" onClick={() =>this.props.handleDelete(inventories)} src="../x.png" width="22px" alt="x"/></td>
                                                         <td className="table-date">{inventories.date}</td>
                                                         <td>{inventories.category}</td>
                                                         <td>{inventories.name}</td>
@@ -109,7 +106,7 @@ class EditInventory extends Component {
                                                 .filter(inventories => inventories.category === `${this.state.filteredCategory}` && inventories.date === `${this.state.date === "" ? this.props.userInfo[0].date : this.state.date}`)
                                                 .map(inventories => (
                                                     <tr key={inventories.id} className="info" id={inventories.id % 2 === 0 ? "dos" : "uno"}>
-                                                        <td><img className="x" onClick={() =>this.props.handleDelete(inventories)} src="../x.png" width="22px"/></td>
+                                                        <td><img className="x" onClick={() =>this.props.handleDelete(inventories)} src="../x.png" width="22px" alt="x"/></td>
                                                         <td className="table-date">{inventories.date}</td>
                                                         <td>{inventories.category}</td>
                                                         <td>{inventories.name}</td>
@@ -135,66 +132,3 @@ class EditInventory extends Component {
     }
 
 export default EditInventory;
-
-
-
-{/* <>
-                                            {this.props.userInfo
-                                                .filter(inventories => inventories.category === `${this.state.filteredCategory}` && inventories.date === `${this.state.date}`)
-                                                .map(inventories => (
-                                                    <tr key={inventories.id} className="info" id={inventories.id % 2 === 0 ? "dos" : "uno"}>
-                                                        <td className="table-date">{inventories.date}</td>
-                                                        <td>{inventories.category}</td>
-                                                        <td>{inventories.name}</td>
-                                                        <td>{inventories.qty}</td>
-                                                        <td><span>$</span>{inventories.price_per_item}</td>
-                                                        <td><span>$</span>{inventories.total_cost}</td>
-                                                    </tr>
-                                                ))}
-                                            </> */}
-
-
-
-
-
-
-
-
-// `${this.state.startDate}`
-
-
-                        // {this.props.userInfo 
-                        //     ?                 
-                        //     this.props.userInfo.map(inventories => (
-                        //         <div className="index" key={inventories.id}>
-                        //             <ul>
-                        //                 <li>{inventories.name}</li>
-                        //             </ul>
-                        //         </div>
-                        //     ))
-                        // :
-                        // ""} 
-
-
-
-
-
-
-
-                        //     //UPDATE likes
-//     addSupport = (recipe) => {
-//         fetch(`http://localhost:3000/users/${this.props.userInfo.id}/inventories/${recipe.id}`, {
-//         method: 'PUT',
-//         body: JSON.stringify({likes: recipe.likes + 1}),
-//         headers: {
-//             'Accept': 'application/json, text/plain, */*',
-//             'Content-Type' : 'application/json'
-//         }
-//         }).then(res => res.json())
-//         .then(resJson => {
-//             const copyRecipes = [...this.state.recipe]
-//             const findIndex = this.state.recipe.findIndex(recipe => recipe.id === resJson.id)
-//             copyRecipes[findIndex].likes = resJson.likes;
-//             this.setState({recipe: copyRecipes})
-//         })
-//   }
