@@ -1,5 +1,6 @@
 ## Liquor-IQ
-Users will be allowed to create, read, update, and delete doc recipes. 
+User can create a new usser and login.
+Users will be allowed to create, read, and delete their inventories. 
 
 ## Link to front-end and back-end
 * https://liquor-iq.herokuapp.com/
