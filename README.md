@@ -22,7 +22,7 @@ An app for liquor store owners that allows them to track their inventories.
 
 ## Future Additions:
 * Add more graphs to display more data.
-* Add new data table which will user's inventory edits.
+* Allow Edits of the inventory and adding all the same items together.
 * Add login/create user messages.
 * Add logged in user's name to dashboard with a greeting.
 
