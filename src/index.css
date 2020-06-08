@@ -181,8 +181,13 @@ a:hover {
     margin-bottom: 0;
     background: rgb(65, 135, 182);
     height: 45px;
-    width: 175px;
+    width: 82vw;
 }
+
+.dashnav span {
+    color: #535562;
+}
+
 .dashnav nav {
     margin-top: 20px;
     margin-right: 20px;
@@ -254,7 +259,8 @@ aside {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 10px;
+    margin: 10px auto;
+    width: 1185px;
 
     -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
@@ -297,9 +303,11 @@ aside {
 /* USERINFO display */
 
 .table {
-    width: 100%;
+    width: 350px;
     color: white;
     font-family: "josefin slab", sans-serif;
+    /* background-color: white; */
+    border: 2px solid white;
 
      -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
@@ -308,32 +316,36 @@ aside {
 .table th{    
     background-color: #484A55;
     color: white;
-}
-
-.table-date {
     text-align: left;
-    width: 100px;
 }
 
 .info {
     color: black;
-    text-align: center;
+    text-align: left;
     background-color: white;
-}
-
-#uno {
-    background-color: white;
-}
-
-#dos {
-    background-color: #EFEEED;
 }
 
 .pagescroll {
+    height: 250px;
+    overflow-y: auto;
 
-    height: 400px;
-    overflow-y: scroll;
+    margin: 15px 15px;
+
 }
+
+.display-one {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    height: 80vh;
+    overflow-y: scroll;
+    background-color: #484A55;
+    width: 1185px;
+    margin: 25px auto;
+}
+
 /* USERINFO Display */
 
 
@@ -381,15 +393,37 @@ aside {
     -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+}
 
-    
+.view-table {
+    width: 100%!important;
+}
+
+.name {
+    font-weight: bold;
 }
 /* EDIT/DELETE */
 
 /* GRAPHS */
+.overview {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.bar {
+    width: 500px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.line {
+    width: 500px;
+}
+
 canvas {
     background-color: white;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 

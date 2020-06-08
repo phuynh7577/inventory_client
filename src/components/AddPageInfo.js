@@ -10,32 +10,241 @@ class AddPageInfo extends Component {
         return(
             <div className="display">
                 <div className="display-one">
-                    <h4>Last 25 Inventory Added</h4>
+                    {/* <h4>Last 25 Inventory Added</h4> */}
                     <div className="pagescroll">
                         <table className="table">
                             <tbody>
                                 <tr>
-                                    <th className="table-date">Input Date</th>
-                                    <th>Type</th>
-                                    <th>Name</th>
+                                    <th>Beers</th>
                                     <th>QTY</th>
-                                    <th>Price Per Item</th>
-                                    <th>Total Cost</th>
                                 </tr>
-                                {this.props.userInfo.slice(0, 25).map((userInfo) => (
-                                <tr key={userInfo.id} className="info" id={userInfo.id % 2 === 0 ? "dos" : "uno"}>
-                                    <td className="table-date">{userInfo.date}</td>
-                                    <td>{userInfo.category}</td>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Beer").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
                                     <td>{userInfo.name}</td>
                                     <td>{userInfo.qty}</td>
-                                    <td><span>$</span>{userInfo.price_per_item}</td>
-                                    <td><span>$</span>{userInfo.total_cost}</td>
                                 </tr>
                                 
                                 ))}
                             </tbody>
                         </table>
                     </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Wine</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Wine").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Hard Cider</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Hard Cider").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Mead</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Mead").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Saky</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Saky").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Gin</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Gin").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Brandy</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Brandy").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Whiskey</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Whiskey").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Rum</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Rum").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Tequila</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Tequila").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Vodka</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Vodka").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Everclear</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Everclear").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagescroll">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Absinthe</th>
+                                    <th>QTY</th>
+                                </tr>
+                                {this.props.userInfo.filter(inventories => inventories.category === "Absinthe").map((userInfo) => (
+                                <tr key={userInfo.id} className="info">
+                                    <td>{userInfo.name}</td>
+                                    <td>{userInfo.qty}</td>
+                                </tr>
+                                
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    
                 </div>
             </div>
         )

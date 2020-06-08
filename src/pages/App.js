@@ -7,7 +7,6 @@ import Signup from "./Signup"
 import Navbar from "../components/Navbar"
 import Dashboard from "./Dashboard"
 
-
 class App extends Component {
   state ={
     user: userService.getUser(),
@@ -16,18 +15,17 @@ class App extends Component {
 
 
                                   // **********CALLBACK METHODS***********
+  // assist in loging out
   handleLogout = () => {
     userService.logout()
     this.setState({ user: null })
   }
 
+  // assist in signing up or logging in.
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
-                              // *************LIFECYCLE METHODS*****************
  
-
-
   render() {
     // console.log(this.state.user)
     return(

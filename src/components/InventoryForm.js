@@ -35,8 +35,15 @@ class InventoryForm extends Component {
         })
         .then (res => res.json())
         .then (resJson => {
+            this.setState({
+                category: "",
+                qty: "",
+                name: "",
+                price_per_item: "",
+                total_cost: ""
+            })
             this.props.handleAddRequest(resJson)
-            // this.props.history.push('/dashboard/input-form')
+            // this.props.history.push('/dashboard/form-input')
         }).catch (error => console.error({'Error': error}))
     }
 

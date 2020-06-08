@@ -12,8 +12,7 @@ import EditInventory from "../components/EditInventory"
 class Dashboard extends Component {
 
   state = {
-    userInfo: [],
-    data: ""
+    userInfo: []
   }
 
   // handle inventory submit
@@ -22,11 +21,6 @@ class Dashboard extends Component {
     copyUserInfo.unshift(userInfo)
     this.setState({
         userInfo: copyUserInfo,
-        category: "",
-        qty: "",
-        name: "",
-        price_per_item: "",
-        total_cost: ""
     })
 }
 
@@ -73,6 +67,7 @@ class Dashboard extends Component {
         }
       })
     .then(json => {
+      // filter by id
       const newUserInfo = this.state.userInfo.filter(inventories => inventories.id !== inventory.id)
       this.setState({newUserInfo})
       this.componentDidMount()
