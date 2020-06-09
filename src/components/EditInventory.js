@@ -54,7 +54,14 @@ class EditInventory extends Component {
                             <option value="Everclear">Everclear</option>
                         </select>             
                     </div> 
-                    
+                    <ul className="edit-info info header">
+                        <li></li>
+                        <li>Type</li>
+                        <li>Name</li>
+                        <li>Quanity</li>
+                        <li>Price</li>
+                        <li>Total Cost</li>
+                    </ul>
                     <>
                         {this.state.filteredCategory === "all" ? this.props.userInfo
                             .map(userInfo => 

@@ -32,18 +32,16 @@ class Inventory extends React.Component {
 
         : 
         <>
-        <table className="edit-inventory view-table table" id="table">
-            <tbody>
-                <tr key={userInfo.id} className="info">
-                    <td><img className="x" onClick={() =>this.props.handleDelete(userInfo)} src="../x.png" width="22px" alt="x"/></td>
-                    <td>{userInfo.category}</td>
-                    <td className="name" onClick={this.toggleForm}>{userInfo.name}</td>
-                    <td>{userInfo.qty}</td>
-                    <td><span>$</span>{userInfo.price_per_item}</td>
-                    <td><span>$</span>{userInfo.total_cost}</td>
-                </tr>
-            </tbody>
-        </table>
+
+                <ul key={userInfo.id} className="edit-info info">
+                    <li><img className="x" onClick={() =>this.props.handleDelete(userInfo)} src="../x.png" width="22px" alt="x"/></li>
+                    <li>{userInfo.category}</li>
+                    <li className="name" onClick={this.toggleForm}>{userInfo.name}</li>
+                    <li>{userInfo.qty}</li>
+                    <li><span>$</span>{userInfo.price_per_item}</li>
+                    <li><span>$</span>{userInfo.total_cost}</li>
+                </ul>
+
         </>
         }
         </>

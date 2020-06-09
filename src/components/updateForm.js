@@ -43,7 +43,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="edit-form">
         <input
           onChange={this.handleChange}
           name={"name"}
