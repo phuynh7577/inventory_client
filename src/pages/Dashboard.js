@@ -15,6 +15,26 @@ class Dashboard extends Component {
     userInfo: []
   }
 
+  handleUpdate = (event, inventory) => {
+    console.log(inventory)
+    event.preventDefault()
+    console.log('in it to win it')
+    fetch(`https://liquor-iq-api.herokuapp.com/users/${userService.getUser().id}/inventories/${inventory.id}`, {
+      body: JSON.stringify(inventory),
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(updatedLiquor => {
+      this.componentDidMount()
+    })
+    .catch(error => console.log(error))
+  }
+
+
+
   // handle inventory submit
   handleAddRequest = (userInfo) => {
     const copyUserInfo = [...this.state.userInfo]
@@ -22,11 +42,13 @@ class Dashboard extends Component {
     this.setState({
         userInfo: copyUserInfo,
     })
-}
+  }
+
 
   componentDidMount() {
     this.getUserInfo()
   }
+
 
   getinfo = userInfo => {
     this.setState({userInfo})
@@ -141,6 +163,7 @@ class Dashboard extends Component {
                         userInfo={this.state.userInfo}
                         handleDelete={this.handleDelete}
                         componentDidMount={this.componentDidMount}
+                        handleUpdate={this.handleUpdate}
                         />}
                     />
                 </div>
