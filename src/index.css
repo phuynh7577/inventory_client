@@ -260,7 +260,6 @@ aside {
     justify-content: center;
     text-align: center;
     margin: 10px auto;
-    width: 1185px;
 
     -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
@@ -326,11 +325,11 @@ aside {
 }
 
 .pagescroll {
-    height: 250px;
+    /* height: 250px; */
     overflow-y: auto;
 
     margin: 15px 15px;
-
+    max-height: 200px;
 }
 
 .display-one {
@@ -342,7 +341,6 @@ aside {
     height: 80vh;
     overflow-y: scroll;
     background-color: #484A55;
-    width: 1185px;
     margin: 25px auto;
 }
 
@@ -375,15 +373,28 @@ aside {
 
 .edit-options {
     background-color: #484A55;
+    display: flex;
     -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+}
+
+.edit-options h4 {
+    color: white;
+    font-family: "josefin slab", sans-serif;
+    line-height: 20px;
+    
 }
 
 .name {
     font-weight: bold;
     color: rgb(65, 135, 182);
     text-decoration: underline;
+}
+
+.name:hover {
+    cursor: pointer;
+    color: #484A55;
 }
 
 .edit-info {

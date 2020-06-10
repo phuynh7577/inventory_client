@@ -52,7 +52,8 @@ class EditInventory extends Component {
                             <option value="Vodka">Vodka</option>
                             <option value="Absinthe">Absinthe</option>
                             <option value="Everclear">Everclear</option>
-                        </select>             
+                        </select>   
+                        <h4>*Click on name to update your inventory.</h4>          
                     </div> 
                     <ul className="edit-info info header">
                         <li></li>

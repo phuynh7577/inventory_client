@@ -107,7 +107,7 @@ class Dashboard extends Component {
                 handleLogout={this.props.handleLogout}
               />
               {!this.props.user ? 
-                <Redirect push to="/"/>
+                <Redirect push to="/login"/>
                 :
                 <div className="dashboard">
                   <div className="left">
@@ -129,7 +129,7 @@ class Dashboard extends Component {
                       <Link to="/dashboard/view-edit" className="three">
                         <div className="inside-three">
                           <img src="../edit.png" width="40px" alt="overview"/>
-                          <h4>VIEW/DELETE<br/>INVENTORY</h4>
+                          <h4>UPDATE/DELETE<br/>INVENTORY</h4>
                         </div>
                       </Link>
                     </aside>

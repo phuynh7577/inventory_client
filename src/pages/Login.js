@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import userService from '../utils/userService';
 
 class Login extends Component {
@@ -26,6 +26,7 @@ class Login extends Component {
       // Successfully signed up 
       this.props.history.push('/dashboard');
     } catch (err) {
+      // this.props.history.push('/login')
       // need to add model or toast to let user know invalid credentials
       alert('Invalid Credentials!');
     }
@@ -34,9 +35,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        {this.props.user ? 
-          <Redirect push to="/"/>
-            :
+
           <div className="login-page">
             <div className="title">
               <Link to="/"><h1>LIQUOR-IQ</h1></Link>
@@ -51,9 +50,9 @@ class Login extends Component {
                 </div>
           </form>
         </div>
-        }
+        
       </div>
-    );
+    )
   }
 }
 

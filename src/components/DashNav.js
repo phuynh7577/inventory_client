@@ -5,6 +5,7 @@ const DashNav = (props) => {
     let dashNav = props.user ? 
         <nav>
           <Link to='/' className='Navbar-link' onClick={props.handleLogout}>LOG OUT</Link>
+          {/* <Link to="/"><h1><span>Welcome Back!</span> {props.user.store_name}</h1></Link> */}
           {/* <h1>{props.user.store_name}</h1> */}
         </nav>
           :
@@ -12,7 +13,10 @@ const DashNav = (props) => {
        
     return(
         <div className="dashnav">
-            <Link to="/"><h1><span>Welcome Back!</span> {props.user.store_name}</h1></Link>
+            {props.user ? 
+              <Link to="/"><h1><span>Welcome Back!</span> {props.user.store_name}</h1></Link>
+              : 
+              ""}
             {dashNav}
         </div>
     )
